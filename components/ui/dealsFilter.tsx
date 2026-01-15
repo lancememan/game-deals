@@ -95,7 +95,7 @@ const dealsFilter = () => {
                 id="AAA"
                 name="AAA"
                 type="checkbox"
-                defaultChecked={searchParams.get("AAA") === "true"}
+                defaultChecked={searchParams.get("AAA") === "1"}
                 value="true"
                 className="appearance-none w-6 h-6 bg-gray-800 rounded-md outline-1 -outline-offset-1 outline-gray-600 checked:bg-blue-950 checked:before:content-['\2714'] checked:text-sm checked:before:flex checked:before:items-center checked:before:justify-center"
             />

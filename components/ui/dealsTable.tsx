@@ -39,14 +39,13 @@ const DealsTable = (options: filterOptions) => {
   if (steamRating) params.append("steamRating", steamRating);
   if (sortBy) params.append("sortBy", sortBy);
   
-  console.log("Fetching deals with params: ", params.toString());
   useEffect(() => {
       const fetchDeals = async () => {
         try {
           const res = await fetch("/api/dealList/?" + params.toString());
           if (!res.ok) throw new Error("Failed to fetch deals");
           const data = await res.json();
-          setDeals([...data]);
+          setDeals([...data.deals]);
         } catch (err: any) {
           setError(err.message);
         } finally {
