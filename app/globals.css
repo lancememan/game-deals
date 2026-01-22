@@ -20,12 +20,6 @@
 html {
   scroll-behavior: smooth !important;
 }
-.deal-entry:hover .rating {
-  display: block;
-}
-.deal-entry .rating{
-  display: none;
-}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
