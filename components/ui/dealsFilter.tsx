@@ -1,5 +1,5 @@
 import Form from "next/form"
-import { redirect, useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 const dealsFilter = () => {
   const searchParams = useSearchParams()
