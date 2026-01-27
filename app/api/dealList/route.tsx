@@ -43,9 +43,10 @@ async function getDeals(params: DealParams) {
       queryParams.append("storeID", "1"); //default to steam
       if (params.title) queryParams.append("title", params.title);
       if (params.pageNumber) queryParams.append("pageNumber", String(params.pageNumber));
-      if (params.lowerPrice) queryParams.append("lowerPrice", String(params.lowerPrice));      
+      if (params.lowerPrice) queryParams.append("lowerPrice", String(params.lowerPrice));
+      if (params.upperPrice) queryParams.append("upperPrice", String(params.upperPrice));
       if (params.AAA == "true" || params.AAA == "1") queryParams.append("AAA", "1");
-      if (params.steamRating) queryParams.append("pageNumber", String(params.steamRating));
+      if (params.steamRating) queryParams.append("steamRating", String(params.steamRating));
       if (params.sortBy) queryParams.append("sortBy", params.sortBy);
       queryParams.append("onSale", "1");
       if (params.desc == "true" || params.desc == "1") queryParams.append("desc", "1");

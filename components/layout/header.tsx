@@ -22,9 +22,6 @@ export default function Header() {
               <Link href="/" className="hover:text-sky-600">Home</Link>
             </li>
             <li>
-              <Link href="/deals" className="hover:text-sky-600">Deals</Link>
-            </li>
-            <li>
               <Link href="/about" className="hover:text-sky-600">About</Link>
             </li>
           </ul>
