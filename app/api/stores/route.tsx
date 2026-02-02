@@ -4,7 +4,12 @@ import { unstable_cache } from "next/cache";
 // Cache the stores list globally
 const getStores = unstable_cache(
   async () => {
-    const res = await fetch("https://www.cheapshark.com/api/1.0/stores");
+    const res = await fetch("https://www.cheapshark.com/api/1.0/stores", {
+      headers: {
+        "Accept": "application/json",
+        "User-Agent": "game-deals/1.0 (https://lancememan-game-deals.vercel.app/)"
+      }
+    });
     return res.json();
   },
   ["stores-list"],
