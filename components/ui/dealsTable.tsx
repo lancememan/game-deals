@@ -145,7 +145,7 @@ const DealsTable = () => {
             const percentageSaved = (
                   ((deal.normalPrice - deal.salePrice) / deal.normalPrice) * 100
                 ).toFixed(0);
-                const steamIcon = "https://www.cheapshark.com/img/stores/icons/0.png";
+                const steamIcon = "/steam.webp";
 
             return(
               <tr key={deal.dealID} className="">
