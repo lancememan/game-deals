@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: "https",
+        hostname: "www.cheapshark.com",
+        pathname: "/img/stores/icons/**",
+      },      
     ],
   }
 };
