@@ -14,9 +14,15 @@ function getDealDetails(dealID: string) {
   );
 }
 
-async function GET(req: Request) {
+export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
-    const dealID = searchParams.get("dealID") || "";
+    const dealID = searchParams.get("dealId");
+    if (!dealID) {
+      return NextResponse.json({ error: "Missing dealID" }, { status: 400 });
+    }
+
+    // Call the cached function directly
     const dealDetails = await getDealDetails(dealID)();
     return NextResponse.json(dealDetails);
+    
 }
