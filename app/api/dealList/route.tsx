@@ -54,7 +54,12 @@ async function getDeals(params: DealParams) {
       const query = queryParams.toString();
 
       //Fetch deals
-      const dealsRes = await fetch(`https://www.cheapshark.com/api/1.0/deals?${query}`);
+      const dealsRes = await fetch(`https://www.cheapshark.com/api/1.0/deals?${query}`,{
+        headers: {
+        "Accept": "application/json",
+        "User-Agent": "game-deals/1.0 (https://lancememan-game-deals.vercel.app/)"
+        }
+      });
       if (!dealsRes.ok) {
         throw new Error(`HTTP error! Status: ${dealsRes.status}`);
       }
