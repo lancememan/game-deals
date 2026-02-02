@@ -181,7 +181,8 @@ const DealsTable = () => {
                             alt='steam'
                             width={16} 
                             height={16} 
-                            className="inline-block ml-1 mr-1 flex-none"/>
+                            className="inline-block ml-1 mr-1 flex-none"
+                            crossOrigin='anonymous' />
                     <div>
                       <p className="text-gray-500 text-[12px] text-left">${deal.normalPrice}</p>
                       <p className="text-[18px] text-green-600">${deal.salePrice}</p>
