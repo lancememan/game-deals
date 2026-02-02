@@ -74,7 +74,7 @@ async function getDeals(params: DealParams) {
 
 // API route
 export async function GET(req: Request) {
-
+  try {
     const { searchParams } = new URL(req.url);
 
     const params: DealParams = {
@@ -91,5 +91,8 @@ export async function GET(req: Request) {
     const enrichedDeals = await getDeals({... params});
 
     return NextResponse.json(enrichedDeals);
+  } catch (err) {
+    return Response.json({ error: (err as Error).message }, { status: 500 });
+  }
 
 }
