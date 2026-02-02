@@ -17,10 +17,14 @@ const Page = () => {// start true
       </section>    
       <section className="bg-background text-foreground p-4">        
         <div className="container mx-auto max-w-full w-[1020]">
+          <Suspense fallback={<div>Loading...</div>}>
             <DealsTable />
+          </Suspense>
         </div>
       </section>
-      <DealsFilter />
+      <Suspense fallback={<div>Loading...</div>}>
+        <DealsFilter />
+      </Suspense>
     </>
   );
 };
