@@ -55,11 +55,14 @@ async function getDeals(params: DealParams) {
 
       //Fetch deals
       const dealsRes = await fetch(`https://www.cheapshark.com/api/1.0/deals?${query}`);
-      if (!dealsRes.ok) throw new Error("Failed to fetch deals");
+      if (!dealsRes.ok) {
+        throw new Error(`HTTP error! Status: ${dealsRes.status}`);
+      }
 
       const totalPages = Number(dealsRes.headers.get("X-Total-Page-Count") || 0);
       
       const deals = await dealsRes.json();
+      console.log(deals);
 
       return { totalPages, deals };
     },
@@ -92,7 +95,11 @@ export async function GET(req: Request) {
 
     return NextResponse.json(enrichedDeals);
   } catch (err) {
-    return Response.json({ error: (err as Error).message }, { status: 500 });
+    console.error("Full error object:", err);
+    return Response.json(
+      { error: (err as Error).message, stack: (err as Error).stack },
+      { status: 500 }
+    );
   }
 
 }
