@@ -2,9 +2,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import { IoPricetags } from "react-icons/io5";
+import { link } from "fs/promises";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const links = [
+    { href: "/", label: "Home" },    
+    { href: "/about", label: "About" },
+  ];
 
   return (
     <header className="border-b border-gray-200 dark:border-gray-800">
@@ -18,12 +23,11 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:block">
           <ul className="flex items-center gap-6 list-none m-0 p-0 text-sm">
-            <li>
-              <Link href="/" className="hover:text-sky-600">Home</Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-sky-600">About</Link>
-            </li>
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:text-sky-600">{link.label}</Link>
+              </li>
+            ))}            
           </ul>
         </nav>
 
@@ -48,17 +52,13 @@ export default function Header() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <nav className="md:hidden border-t border-gray-200 dark:border-gray-800">
-          <ul className="flex flex-col gap-4 p-4 text-sm">
-            <li>
-              <Link href="/" className="hover:text-sky-600">Home</Link>
-            </li>
-            <li>
-              <Link href="/deals" className="hover:text-sky-600">Deals</Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-sky-600">About</Link>
-            </li>
+        <nav className="md:hidden border-t border-gray-200 dark:border-gray-800 absolute top-16 bg-background border-b z-10 w-full">
+          <ul className="flex flex-col gap-4 p-4 text-sm">            
+            {links.map((link) => (
+              <li key={link.href} className="hover:text-sky-600">
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
       )}
