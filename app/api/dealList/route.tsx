@@ -57,7 +57,7 @@ async function getDeals(params: DealParams) {
       const dealsRes = await fetch(`https://www.cheapshark.com/api/1.0/deals?${query}`,{
         headers: {
         "Accept": "application/json",
-        "User-Agent": "game-deals/1.0 (https://lancememan-game-deals.vercel.app/)"
+        "User-Agent": `game-deals/1.0 (${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"})`
         }
       });
       if (!dealsRes.ok) {
