@@ -24,6 +24,7 @@ const DealsTable = () => {
   const [steamRating, setSteamRating] = useState(getNumberParam(searchParams, "steamRating"))
   const [sortBy, setSortBy] = useState(getStringParam(searchParams, "sortBy")|| 'DealRating');
   const [desc, setdesc] = useState(getBooleanParam(searchParams, "desc"));
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     //update data if url changes
@@ -42,11 +43,13 @@ const DealsTable = () => {
   
   function fetchDeals(params:URLSearchParams) {
       const fetchDeals = async () => {
+        setLoading(true);
         try {
           const res = await fetch("/api/dealList/?" + params.toString());
           if (!res.ok) throw new Error("Failed to fetch deals");
           const data = await res.json();
-          setDeals([...data.deals]);          
+          setDeals([...data.deals]);   
+          setLoading(false);       
           setTotalPages(data.totalPages);
           console.log(data.totalPages);
         } catch (err: any) {
@@ -95,6 +98,10 @@ const DealsTable = () => {
       default:
         return "bg-gray-300 text-gray-900";
     }
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (
